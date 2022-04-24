@@ -16,6 +16,8 @@ QQ交流：3316954823
 柏晓技术上网行为管理终端框架是属于柏晓技术团队的免费产品，大家免费使用，同时，柏晓技术团队也能提供相应的收费技术咨询、技术服务和技术定制，谢谢大家支持！
 
 获取更多信息
-deskvideosys开源项目：www.cbrdesk.com
+deskvideosys开源项目相关资料：www.cbrdesk.com
+
+ [下载解压 版本包](http://www.cbrdesk.com/page74)
 
 Copyright © boxiaozhishu Team 2020-2022
