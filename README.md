@@ -20,4 +20,4 @@ deskvideosys开源项目相关资料：www.cbrdesk.com
 
  [下载解压 版本包](http://www.cbrdesk.com/page74)
 
-Copyright © boxiaozhishu Team 2020-2022
+Copyright © boxiaojishu Team 2020-2022
