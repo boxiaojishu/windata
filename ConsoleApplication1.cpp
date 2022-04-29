@@ -1,5 +1,9 @@
-﻿// ConsoleApplication1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
+/*
+ * Copyright (c) 2021-2031, 深圳市柏晓技术有限公司
+ * All rights reserved.
+ *
+ */
+
 #include <winsock2.h>  
 #include <WS2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
