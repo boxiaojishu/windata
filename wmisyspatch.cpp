@@ -10,7 +10,6 @@
 
 using namespace std;
 
-//wusa /uninstall /kb:4012598/quiet /norestart
 
 #pragma comment(lib, "wbemuuid.lib")
 
@@ -110,7 +109,6 @@ int getupdatepatchlist(TCHAR* ppatchlist)
 
     // 第六步：使用 IWbemServices 指针获取系统名
     IEnumWbemClassObject* pEnumerator = NULL;
-    //hres = pSvc->ExecQuery(bstr_t("WQL"), bstr_t("SELECT * FROM Win32_OperatingSystem"), WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, NULL, &pEnumerator);
     hres = pSvc->ExecQuery(bstr_t("WQL"), bstr_t("SELECT * FROM Win32_QuickFixEngineering"), WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, NULL, &pEnumerator);
 
     if (FAILED(hres))
@@ -139,7 +137,7 @@ int getupdatepatchlist(TCHAR* ppatchlist)
 
         // 获取Name属性值
         hr = pclsObj->Get(L"Caption", 0, &vtProp, 0, 0);
-        //wcout << " 系统名 : " << vtProp.bstrVal ;
+
         _snwprintf_s(ppatchlist, 102400,102400, L"%s,%s", ppatchlist, vtProp.bstrVal);
         VariantClear(&vtProp);
 
@@ -147,64 +145,48 @@ int getupdatepatchlist(TCHAR* ppatchlist)
 
         // 获取Name属性值
         hr = pclsObj->Get(L"CSName", 0, &vtProp, 0, 0);
-       // wcout << " CSName : " << vtProp.bstrVal << endl;
+
         _snwprintf_s(ppatchlist, 102400, 102400,L"%s,%s", ppatchlist, vtProp.bstrVal);
        // printf("string type  %d\n", vtProp.vt);
         VariantClear(&vtProp);
 
         // 获取Name属性值
         hr = pclsObj->Get(L"Description", 0, &vtProp, 0, 0);
-        //wcout << " Description : " << vtProp.bstrVal << endl;
+
         _snwprintf_s(ppatchlist, 102400, 102400,L"%s,%s", ppatchlist, vtProp.bstrVal);
         VariantClear(&vtProp);
 
         // 获取Name属性值
         hr = pclsObj->Get(L"FixComments", 0, &vtProp, 0, 0);
-        //wcout << " FixComments : " << vtProp.bstrVal << endl;
+
         _snwprintf_s(ppatchlist, 102400, 102400,L"%s,%s", ppatchlist, vtProp.bstrVal);
         VariantClear(&vtProp);
 
         // 获取Name属性值
         hr = pclsObj->Get(L"HotFixID", 0, &vtProp, 0, 0);
         _snwprintf_s(ppatchlist, 102400, 102400,L"%s,%s", ppatchlist, vtProp.bstrVal);
-        //wcout << " HotFixID : " << vtProp.bstrVal << endl;
+
         VariantClear(&vtProp);
 
-        //获取Name属性值
-        hr = pclsObj->Get(L"InstallDate", 0, &vtProp, 0, 0);
-        //printf("date type  %d\n", vtProp.vt);
-        //wcout << " InstallDate : " << vtProp.bstrVal << endl;
-        //VariantClear(&vtProp);
+
 
         // 获取Name属性值
         hr = pclsObj->Get(L"InstalledBy", 0, &vtProp, 0, 0);
-        //wcout << " InstalledBy : " << vtProp.bstrVal << endl;
+
         _snwprintf_s(ppatchlist, 102400, 102400,L"%s,%s", ppatchlist, vtProp.bstrVal);
         VariantClear(&vtProp);
 
         // 获取Name属性值
         hr = pclsObj->Get(L"InstalledOn", 0, &vtProp, 0, 0);
-        //wcout << " InstalledOn : " << vtProp.bstrVal << endl;
+
         _snwprintf_s(ppatchlist, 102400, 102400,L"%s,%s", ppatchlist, vtProp.bstrVal);
         VariantClear(&vtProp);
-
-        // 获取Name属性值
-        hr = pclsObj->Get(L"Name", 0, &vtProp, 0, 0);
-       // printf("name type  %d\n", vtProp.vt);
-        //wcout << " Name : " << vtProp.bstrVal << endl;
-       // VariantClear(&vtProp);
 
         // 获取Name属性值
         hr = pclsObj->Get(L"ServicePackInEffect", 0, &vtProp, 0, 0);
        // wcout << " ServicePackInEffect : " << vtProp.bstrVal << endl;
         _snwprintf_s(ppatchlist, 102400, 102400,L"%s,%s;", ppatchlist, vtProp.bstrVal);
         VariantClear(&vtProp);
-
-        //获取Name属性值
-       hr = pclsObj->Get(L"Status", 0, &vtProp, 0, 0);
-      // printf("status type  %d\n", vtProp.vt);
-        //wcout << " Status : " << vtProp.bstrVal << endl;
-        //VariantClear(&vtProp);
 
         pclsObj->Release();
     }
@@ -293,13 +275,8 @@ int Getuninstallpatch(TCHAR *ppatchlist)
         else {
             _snwprintf_s(ppatchlist, 102400, 102400, _T("%s;%s,%s,%s,%s,%s,%d"), ppatchlist, updateName, odt.Format(_T("%Y-%m-%d %H:%M:%S")), desc, url, handle, isinstall);
         }
-        //wprintf(L"all2:%s\n", updateName);
-        //cout << i + 1 << " - " << W2A(CString(updateName)) << "  Release Date " << W2A(odt.Format(_T("%Y-%m-%d %H:%M:%S"))) << "  desc:" << W2A(CString(desc))
-        //    << "  isinstall:" << isinstall << "  url:" << W2A(CString(url)) << " handle:" << W2A(CString(handle)) << endl;
-    }
 
-    //wprintf(L"all:%s\n", ppatchlist);
+    }
     ::CoUninitialize();
-    //wcin.get();
     return 0;
 }
