@@ -196,7 +196,7 @@ int getupdatepatchlist(TCHAR* ppatchlist)
     pLoc->Release();
     pEnumerator->Release();
     CoUninitialize();
-    system("pause");
+
     return 0;   // Program successfully completed.
 
 }
